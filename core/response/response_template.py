@@ -1,6 +1,4 @@
-from logging import setLoggerClass
-from flask import jsonify
-from werkzeug.wrappers import response
+import json
 
 
 class ResponseTemplate:
@@ -22,9 +20,9 @@ class ResponseTemplate:
         self.data = data
 
     def json(self):
-        return {
+        return json.dumps({
             "success": self.success,
             "error": self.error,
             "msg": self.msg,
             "data": self.data
-        }
+        }, indent=4)
