@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from wazirx_api.extensions.initialization import install_blueprints
 
@@ -17,5 +18,7 @@ if __name__ == "__main__":
     install_blueprints(app)
     print("BLUEPRINTS INSTALLED")
 
+    print("OS PORT->", os.getenv("PORT"))
+
     # Start Flask Server
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=os.getenv("PORT"))
