@@ -17,7 +17,7 @@ def start_flask_app():
     install_blueprints(app)
 
     # Start Flask Server
-    app.run(debug=True, threaded=True,
+    app.run(debug=True, port=8080, threaded=True,
             use_reloader=True, use_debugger=True)
 
 
