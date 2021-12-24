@@ -12,5 +12,6 @@ orders = Blueprint("orders", __name__)
 def statistics():
     my_symbols = ["xrpinr", "shibinr", "adainr"]
     res = Order.getOrders(symbols=my_symbols, limit=2)
+    print(res.json())
     res = Order.getProfits(res.data)
     return res.json()
