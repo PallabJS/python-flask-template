@@ -1,13 +1,13 @@
+import config
 import os
 from flask import Flask
 from wazirx_api.extensions.initialization import install_blueprints
-
-
-import config
+from flask_cors import CORS
 
 
 # Initialize flask app
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/", methods=["GET"])
