@@ -15,6 +15,7 @@ def base_route():
 def start_flask_app():
     # Install Blueprints
     install_blueprints(app)
+    print("BLUEPRINTS INSTALLED")
 
     # Start Flask Server
     app.run()
