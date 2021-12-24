@@ -103,5 +103,7 @@ class Order():
         # Overall profit calculation
         profits_combined.append(total_profit)
 
+        print(json.dumps(profits_combined, indent=2))
+
         res.setStatus(success=True, data=profits_combined)
         return res
