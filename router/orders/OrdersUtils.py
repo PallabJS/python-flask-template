@@ -1,4 +1,5 @@
 import time
+import json
 from requests import request
 import config
 from wazirx_api.api import getUri
@@ -23,11 +24,17 @@ class Order():
                 response = request(url=api_uri,
                                    method="GET",
                                    headers={"X-Api-Key": config.api_key})
+
+                # DEBUG STATEMENT
+                print(f"order response for {symbol}: \
+                     {json.dumps(response.json(), indent=2)}")
+
                 if(response.status_code == 200):
                     orders.extend(response.json())
 
             res.setStatus(success=True, data=orders)
         except Exception as e:
+            print(e)
             res.setStatus(error=True, msg=str(e))
         return res
 
