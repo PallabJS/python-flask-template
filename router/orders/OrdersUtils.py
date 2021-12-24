@@ -26,8 +26,8 @@ class Order():
                                    headers={"X-Api-Key": config.api_key})
 
                 # DEBUG STATEMENT
-                print(f"order response for {symbol}: \
-                     {json.dumps(response.json(), indent=2)}")
+                # print(f"order response for {symbol}: \
+                #      {json.dumps(response.json(), indent=2)}")
 
                 if(response.status_code == 200):
                     orders.extend(response.json())
@@ -79,8 +79,10 @@ class Order():
             "totalProfit": 0
         }
 
+        result_profit = {}
+
         for symbol in all_symbols:
-            result_profit = {
+            result_profit[symbol] = {
                 "symbol": symbol,
                 "investedValue": 0,
                 "currentValue": 0,
@@ -88,15 +90,17 @@ class Order():
             }
             for profit in profits:
                 if(profit['symbol'] == symbol):
-                    result_profit["investedValue"] += profit['investedValue']
-                    result_profit['profit'] += profit['profit']
+                    result_profit[symbol]["investedValue"] += profit['investedValue']
+                    result_profit[symbol]['profit'] += profit['profit']
+                    result_profit[symbol]["currentValue"] += profit['currentValue']
 
                     total_profit['totalInvested'] += profit['investedValue']
                     total_profit['totalProfit'] += profit['profit']
 
-                result_profit['currentValue'] = profit['currentValue']
+            # profit per symbol
+            profits_combined.append(result_profit[symbol])
 
-            profits_combined.append(result_profit)
+        # Overall profit calculation
         profits_combined.append(total_profit)
 
         res.setStatus(success=True, data=profits_combined)
