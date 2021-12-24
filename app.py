@@ -11,16 +11,11 @@ def base_route():
     return {"status": "ok"}
 
 
-# App intance entry point
-def start_flask_app():
+if __name__ == "__main__":
+
     # Install Blueprints
     install_blueprints(app)
     print("BLUEPRINTS INSTALLED")
 
     # Start Flask Server
     app.run()
-
-
-if __name__ == "__main__":
-    # threading.Thread(target=start_flask_app, daemon=True).start()
-    start_flask_app()
