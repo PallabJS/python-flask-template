@@ -1,8 +1,7 @@
 import json
 
 
-class ResponseTemplate:
-
+class Response:
     def __init__(self) -> None:
         self.success = False
         self.error = False

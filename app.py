@@ -1,8 +1,9 @@
 import config
 import os
 from flask import Flask
-from wazirx_api.extensions.initialization import install_blueprints
 from flask_cors import CORS
+
+from app_setup import initialize_app
 
 
 # Initialize flask app
@@ -17,8 +18,8 @@ def base_route():
 
 if __name__ == "__main__":
 
-    # Install Blueprints
-    install_blueprints(app)
+    # App initializer
+    initialize_app(app)
 
     if config.env == "production":
         app.run(host="0.0.0.0", port=os.getenv("PORT"))
