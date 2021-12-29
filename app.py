@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 
-from app_setup import initialize_app
+from app_utils import initialize_app
 
 
 # Initialize flask app
@@ -24,4 +24,5 @@ if __name__ == "__main__":
     if config.env == "production":
         app.run(host="0.0.0.0", port=os.getenv("PORT"))
     else:
-        app.run(port=8000, debug=True, threaded=True)
+        app.run(port=8000, debug=True, threaded=True,
+                use_reloader=True, use_debugger=True)

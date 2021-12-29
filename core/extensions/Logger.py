@@ -22,6 +22,3 @@ class AppLogger:
 
     def error(self, msg):
         self._log.error(msg=msg)
-
-
-log = AppLogger()

@@ -1,5 +1,5 @@
 from core.templates.Response import Response
-from core.extensions.Logger import log
+from app_utils import log
 
 
 class Auth:
@@ -15,6 +15,10 @@ class Auth:
 
     def login(self, username, password):
         res = Response()
+
+        global log
+
+        print("AT LOGIN : ", log)
         try:
             # Write login logic to create a new jwt
             pass

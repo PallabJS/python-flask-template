@@ -2,3 +2,5 @@
 .vscode
 devenv
 __pycache__
+ __pycache__/
+ *.pyc
